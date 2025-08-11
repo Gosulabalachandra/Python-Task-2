@@ -1,11 +1,6 @@
 # Python-Task-2
 #This is my Second Task in this Internship
-# todo.py - Console-based To-Do List Manager
-
-# File to store tasks
 TASKS_FILE = "tasks.txt"
-
-# Load tasks from file
 def load_tasks():
     try:
         with open(TASKS_FILE, "r") as f:
@@ -13,21 +8,15 @@ def load_tasks():
     except FileNotFoundError:
         tasks = []
     return tasks
-
-# Save tasks to file
 def save_tasks(tasks):
     with open(TASKS_FILE, "w") as f:
         for task in tasks:
             f.write(task + "\n")
-
-# Add a new task
 def add_task(task):
     tasks = load_tasks()
     tasks.append(task)
     save_tasks(tasks)
     print(f"✅ Task added: {task}")
-
-# View all tasks
 def view_tasks():
     tasks = load_tasks()
     if not tasks:
@@ -36,8 +25,6 @@ def view_tasks():
         print("\n📜 To-Do List:")
         for idx, task in enumerate(tasks, start=1):
             print(f"{idx}. {task}")
-
-# Remove a task by number
 def remove_task(task_number):
     tasks = load_tasks()
     if 1 <= task_number <= len(tasks):
@@ -46,8 +33,6 @@ def remove_task(task_number):
         print(f"❌ Task removed: {removed}")
     else:
         print("⚠ Invalid task number.")
-
-# Main menu loop
 def main():
     while True:
         print("\n--- TO-DO LIST MENU ---")
